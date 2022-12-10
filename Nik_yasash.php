@@ -10,7 +10,7 @@
 #-----------------(yosh_coders )--------------------#
 
 ob_start();
-$API_KEY = "624993315:AAHFuH9i7547Hu0Oo8U0McmzdwSWALir56g";#توكن البوت
+$API_KEY = "5390304833:AAFTntCeu3tTJe_kCNh0HaA5_OeC8OmE36Q";#توكن البوت
 define('API_KEY',$API_KEY);
 #---
 function MrDG($method,$datas=[]){
@@ -34,7 +34,7 @@ $user = $message->from->username;
 $message_id = $update->message->message_id;
 $from_id = $update->message->from->id;
 
-$info = json_decode(file_get_contents("https://api.telegram.org/bot".API_KEY."/getChatMember?chat_id=@MrDGBOTS&user_id=".$from_id));
+$info = json_decode(file_get_contents("https://api.telegram.org/bot".API_KEY."/getChatMember?chat_id=@iforli_Yasmin_chat&user_id=".$from_id));
 $per = $info->result->status;
 if ($per == 'left') {
 if (!in_array($chat_id, $us)) {
